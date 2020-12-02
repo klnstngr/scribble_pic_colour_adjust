@@ -5,3 +5,9 @@
 *TODO:* color_code.py outputs a matrix with every stroke location for each color
 
 *TODO:* color_codelpy outputs a new image with the new pixels created by itself
+
+*TODO:* Some images have bottom and right cornors with the og image. Fix this
+
+*TEST:* zwei farben ähnlich 6 farbcombination + grautöne
+
+*TODO:* ADD A CACHE SYSTEM!!!
