@@ -1,15 +1,14 @@
 import os, sys
-import time
 from PIL import Image, ImageDraw
 
 draw_size = (825, 624)
 
 file = os.path.dirname(os.path.realpath(__file__))
-origin_loc = os.listdir(file + '/pics')
+origin_files = os.listdir(file + '/pics')
 save_loc = file + '/jpg/'
 gen_loc = file + '/gen/'
 
-all_pics = [pic for pic in origin_loc if "." in pic[-4:]]
+all_pics = [pic for pic in origin_files if "." in pic[-4:]]
 
 for im in all_pics:
     print(im)
