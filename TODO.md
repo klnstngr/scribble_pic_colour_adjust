@@ -1,0 +1,2 @@
+TODO: Implement a cache function, that compares downloaded pictures in pics, .jpg's in jpg and generated pictures in gen
+TODO: Compare every pixel to a scribbl.io colour and create the new picture with scribbl.io colours
