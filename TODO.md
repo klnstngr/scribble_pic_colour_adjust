@@ -10,4 +10,7 @@
 
 *TEST:* zwei farben ähnlich 6 farbcombination + grautöne
 
-*TODO:* ADD A CACHE SYSTEM!!!
+*TODO:* IMPLEMENT CACHE SYSTEM!!!
+
+
+*DONE:* reformat_txt.py

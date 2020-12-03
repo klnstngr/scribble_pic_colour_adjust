@@ -13,31 +13,6 @@ color_map = [['white', (255,255,255)], ['light_grey', (193,193,193)], ['red', (2
             ['grey_pink', (166, 85,117)], ['dark_brown', (98, 48, 13)]
             ]
 
-def map_func(img_name, path, save_path, map):
-    ''' img is the image you want to map to scribbl.io colours
-        map is the available colors on scribbl.io
-    '''
-    red_factor = 0.2
-    green_factor = 0.7
-    blue_factor = 0.1
-    img = Image.open(path + img_name)
-    img = img.copy()
-    img.convert('RGB')
-    for x in range(img.width):
-        for y in range(img.height):
-            current_working_pixel = img.getpixel((x,y))
-            # print(map[0][1])
-            new_pixel = [map[0], 1000]
-            for color in map:
-                balance = numpy.subtract(current_working_pixel, color[1])
-                balance = (abs(red_factor * balance[0]), abs(green_factor * balance[1]), abs(blue_factor * balance[2]))
-                div = sum(list(balance))
-                if new_pixel[1] > div:
-                    new_pixel = [color, div]
-            img.putpixel((x,y), new_pixel[0][1])
-
-    img.save(save_path + 'factor_2_7_10{}'.format(img_name), 'jpeg')
-
 
 def simple_hex_map(img_name, path, save_path, map):
     # the higher the factor the more important is the value
@@ -47,7 +22,7 @@ def simple_hex_map(img_name, path, save_path, map):
     img = Image.open(path + img_name)
     img = img.copy()
     img.convert('RGB')
-    color_matrix = []
+    color_matrix = ''
     for x in range(int(math.floor(img.width/6))):
         for y in range(int(math.floor(img.height/6))):
             pixel = img.getpixel((x*6, y*6))
@@ -76,7 +51,7 @@ def simple_hex_map(img_name, path, save_path, map):
             for i in range(6):
                 for j in range(6):
                     img.putpixel((x*6+i,y*6+j), new_pixel[0][1])
-            color_matrix.append([(x*6+3,y*6+3), new_pixel[0][0]])
+            color_matrix += '\'{}\':({},{})\n'.format(new_pixel[0][0], x*6+3, y*6+3)
     f = open(save_path + 'txt/' + img_name[:-4] + '.txt', 'w')
     f.write(str(color_matrix))
     f.close
