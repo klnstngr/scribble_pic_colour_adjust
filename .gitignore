@@ -2,3 +2,5 @@ pics/
 jpg/
 gen/
 test.py
+cache_gen.txt
+cache_jpg.txt

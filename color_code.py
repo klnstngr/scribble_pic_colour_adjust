@@ -76,7 +76,7 @@ def simple_hex_map(img_name, path, save_path, map):
                 for j in range(6):
                     img.putpixel((x*6+i,y*6+j), new_pixel[0][1])
 
-    img.save(save_path + 'hexa/' + 'low_red_simple_hex_{}'.format(img_name), 'jpeg')
+    img.save(save_path + '{}'.format(img_name), 'jpeg')
 
 
 """def hexa_map_func(img_name, path, save_path, map):
@@ -135,10 +135,9 @@ def simple_hex_map(img_name, path, save_path, map):
 file = os.path.dirname(os.path.realpath(__file__))
 jpg_loc = file + '/jpg/'
 gen_loc = file + '/gen/'
-
 jpgs = os.listdir(file + '/jpg')
-
 pics = [pic for pic in jpgs]
+
 for pic in pics:
     print(pic)
     start_time = time.time()
