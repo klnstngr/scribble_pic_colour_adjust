@@ -47,6 +47,7 @@ def simple_hex_map(img_name, path, save_path, map):
     img = Image.open(path + img_name)
     img = img.copy()
     img.convert('RGB')
+    color_matrix = []
     for x in range(int(math.floor(img.width/6))):
         for y in range(int(math.floor(img.height/6))):
             pixel = img.getpixel((x*6, y*6))
@@ -75,7 +76,10 @@ def simple_hex_map(img_name, path, save_path, map):
             for i in range(6):
                 for j in range(6):
                     img.putpixel((x*6+i,y*6+j), new_pixel[0][1])
-
+            color_matrix.append([(x*6+3,y*6+3), new_pixel[0][0]])
+    f = open(save_path + 'txt/' + img_name[:-4] + '.txt', 'w')
+    f.write(str(color_matrix))
+    f.close
     img.save(save_path + '{}'.format(img_name), 'jpeg')
 
 

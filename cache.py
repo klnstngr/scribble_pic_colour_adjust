@@ -1,6 +1,6 @@
 import os
 
-def cache(pics, picture_location, file_location):
+def cache(pics, file_location):
     # generate
     to_strip=['\'', '[',']']
     g = open(file_location + '//cache_jpg.txt', 'w')
@@ -36,12 +36,10 @@ def cache(pics, picture_location, file_location):
 
 file_loc = os.path.dirname(os.path.realpath(__file__))
 jpg_loc = file_loc + '/jpg/'
-gen_loc = file_loc + '/gen/'
+files_in_folder = os.listdir(file_loc + '/gen/')
 
-files_in_folder = os.listdir(gen_loc)
-
-new_img = cache(files_in_folder, gen_loc, file_loc)
+new_img = cache(files_in_folder, file_loc)
 print(new_img)
 
-
-# TODO: generate new cache after running main.
+if __name__ == '__main__':
+    main()
