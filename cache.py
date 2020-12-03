@@ -2,18 +2,22 @@ import os
 
 def cache(pics, picture_location, file_location):
     # generate
+    to_strip=['\'', '[',']']
     g = open(file_location + '//cache_jpg.txt', 'w')
-    g.write(str(os.listdir(file_location + '/jpg/')))
+    save = (str(os.listdir(file_location + '/jpg/'))).replace('\'', '').replace('[', '').replace(']', '')
+    g.write(save)
     g.close()
     h = open(file_location + '/cache_gen.txt', 'w')
-    h.write(str(os.listdir(picture_location)))
+    save = (str(os.listdir(file_location + '/gen'))).replace('\'', '').replace('[', '').replace(']', '')
+    h.write(save)
     h.close()
     
 
     in_jpg = open(file_location + '/cache_jpg.txt', 'r')
     in_gen = open(file_location + '/cache_gen.txt', 'r')
-    baseline_pics = in_jpg.read().strip('[').strip(']').split(',')
-    generated_pics = in_gen.read().strip('[').strip(']').split(',')
+    baseline_pics = in_jpg.read().split(', ')
+    generated_pics = in_gen.read().split(', ')
+    generated_pics = [item.strip('\'').strip(' ') for item in generated_pics]
     # in_jpg.close()
     # in_gen.close()
 
